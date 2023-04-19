@@ -4,6 +4,7 @@
 // $Id: AccelStepper.cpp,v 1.24 2020/04/20 00:15:03 mikem Exp mikem $
 
 #include "AccelStepper.h"
+#include <cmath>
 
 #if 0
 // Some debugging assistance
@@ -156,7 +157,7 @@ unsigned long AccelStepper::computeNewSpeed()
     {
 	// Subsequent step. Works for accel (n is +_ve) and decel (n is -ve).
 	_cn = _cn - ((2.0 * _cn) / ((4.0 * _n) + 1)); // Equation 13
-	_cn = max(_cn, _cmin); 
+	_cn = std::max(_cn, _cmin); 
     }
     _n++;
     _stepInterval = _cn;
